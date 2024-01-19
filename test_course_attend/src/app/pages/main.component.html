@@ -1,0 +1,23 @@
+<div>
+    <nav aria-label="breadcrumb text-nowrap text-truncate">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">課堂點名（{{today}}）</li>
+        </ol>
+    </nav>
+    <h3 class="my-3">今日課堂</h3>
+    <div class="m-1" *ngIf="!suggests">Loading...</div>
+    <div class="row st-list mt-3">
+        <div *ngFor="let suggest of suggests" (click)="openSuggest(suggest)" class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 point">
+            <div class="card" [ngClass]="{'border-green': suggest.Checked === 'true'}">
+                <div class="card-body text-truncate">
+                    <h5 class="text-gray mb-0 text-truncate">{{suggest.Period}}</h5>
+                    {{suggest.CourseName}}
+                </div>
+                <small class="card-footer text-right text-brown">退：3, 遲：1</small>
+            </div>
+        </div>
+    </div>
+    <h3 class="my-3">課程</h3>
+    <div class="m-1" *ngIf="!courses">Loading...</div>
+    <button mat-raised-button *ngFor="let course of courses" (click)="openPicker(course)" class="m-1 gd-button-primary">{{course.Name}}</button>
+</div>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>課堂點名</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/material.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="./css/material.css" rel="stylesheet" type="text/css">
+    <link href="./css/default.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container-fluid cbs d-flex justify-content-between flex-column">
+
+        <!-- 選課首頁 -->
+        <div id="index" page>
+            <nav aria-label="breadcrumb text-nowrap text-truncate">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">課堂點名（2018/04/27）</li>
+                </ol>
+            </nav>
+            <h3 class="my-3">今日課堂</h3>
+            <div class="row st-list mt-3">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 point" onclick="toggle(event, 'attendence-page')">
+                    <div class="card border-green">
+                        <div class="card-body text-truncate">
+                            <h5 class="text-gray mb-0 text-truncate">早修</h5>
+                            301
+                        </div>
+                        <small class="card-footer text-right text-brown">退：3, 遲：1</small>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 point" onclick="toggle(event, 'attendence-page')">
+                    <div class="card border-green">
+                        <div class="card-body text-truncate">
+                            <h5 class="text-gray mb-0 text-truncate">一</h5>
+                            301 國文V
+                        </div>
+                        <small class="card-footer text-right text-brown">全到</small>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3 point" onclick="toggle(event, 'attendence-page')">
+                    <div class="card p-3">
+                        <h5 class="text-gray mb-0 text-truncate">二</h5>
+                        <div class="text-truncate">301 國文V</div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="my-3">課程</h3>
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#choosePeriod">301 國文V</button>
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#choosePeriod">302 國文V</button>
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#choosePeriod">306 國文V</button>
+        </div>
+
+        <!-- 開始點名 -->
+        <div id="attendence-page" page style="display: none;">
+            <nav aria-label="breadcrumb text-nowrap text-truncate">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" onclick="toggle(event, 'index')">課堂點名（2018/04/27）</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">第一節 301 國文V</li>
+                </ol>
+            </nav>
+            <div class="d-flex flex-column-reverse flex-sm-row">
+                <div class="btn-group dropdown mr-auto">
+                    <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        選擇假別
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">遲到</a>
+                        <a class="dropdown-item" href="#">曠課</a>
+                        <a class="dropdown-item" href="#">病假</a>
+                        <a class="dropdown-item" href="#">公假</a>
+                        <a class="dropdown-item" href="#">喪假</a>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-lg btn-light mb-2 mb-sm-0 mr-sm-2">重新載入</button>
+                <button type="button" class="btn btn-lg btn-info mb-2 mb-sm-0" onclick="toggle(event, 'index')">儲存（病假：1）</button>
+            </div>
+            <div class="row st-list mt-3">
+                <div class="col-sm-4 col-md-3 mb-3">
+                    <div class="card p-3">
+                        <div class="ad-status text-truncate">Check</div>
+                        <h5 class="mb-0 text-truncate">王小明</h5>
+                        <div class="text-gray text-truncate d-flex">6100201<span class="ml-auto">綜三甲 1</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-3 mb-3">
+                    <div class="card p-3">
+                        <div class="ad-status text-truncate">Check</div>
+                        <h5 class="mb-0 text-truncate">王鐘銘</h5>
+                        <div class="text-gray text-truncate d-flex">6100202<span class="ml-auto">綜三甲 2</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-3 mb-3">
+                    <div class="card p-3">
+                        <div class="ad-status text-truncate">Check</div>
+                        <h5 class="mb-0 text-truncate d-flex">王大明<small class="ml-auto text-weight-normal text-green">早修：曠</small></h5>
+                        <div class="text-gray text-truncate d-flex">6100203<span class="ml-auto">綜三甲 3</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-3 mb-3">
+                    <div class="card p-3">
+                        <div class="ad-status text-truncate">Check</div>
+                        <h5 class="mb-0 text-truncate">丁小雨</h5>
+                        <div class="text-gray text-truncate d-flex">6100204<span class="ml-auto">綜三甲 4</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-3 mb-3">
+                    <div class="card p-3">
+                        <div class="ad-status text-truncate">Check</div>
+                        <h5 class="mb-0 text-truncate">丁中與</h5>
+                        <div class="text-gray text-truncate d-flex">6100205<span class="ml-auto">綜三甲 5</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-3 mb-3">
+                    <div class="card p-3">
+                        <div class="ad-status text-truncate">Check</div>
+                        <h5 class="mb-0 text-truncate">丁大雨</h5>
+                        <div class="text-gray text-truncate d-flex">6100206<span class="ml-auto">綜三甲 6</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-3 mb-3">
+                    <div class="card p-3">
+                        <div class="ad-status text-truncate sick">病假</div>
+                        <h5 class="mb-0 text-truncate">汪旺旺</h5>
+                        <div class="text-gray text-truncate d-flex">6100207<span class="ml-auto">綜三甲 7</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-3 mb-3">
+                    <div class="card p-3">
+                        <div class="ad-status text-truncate">Check</div>
+                        <h5 class="mb-0 text-truncate">苗妙淼</h5>
+                        <div class="text-gray text-truncate d-flex">6100208<span class="ml-auto">綜三甲 8</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-3 mb-3">
+                    <div class="card p-3">
+                        <div class="ad-status text-truncate">Check</div>
+                        <h5 class="mb-0 text-truncate">熊孩子</h5>
+                        <div class="text-gray text-truncate d-flex">6100209<span class="ml-auto">綜三甲 9</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <button type="button" class="btn btn-lg btn-light mr-sm-1">重新載入</button>
+                <button type="button" class="btn btn-lg btn-info" onclick="toggle(event, 'index')">儲存（病假：1）</button>
+            </div>
+        </div>
+
+        <!-- 課程介紹內容 -->
+        <div class="modal fade" id="choosePeriod" tabindex="-1" role="dialog" aria-labelledby="choosePeriodTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="choosePeriodTitle">
+                            301 國文Ｖ
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <button type="button" class="btn btn-light mb-2" data-dismiss="modal" onclick="toggle(event, 'attendence-page')">早修</button>
+                        <button type="button" class="btn btn-light mb-2" data-dismiss="modal" onclick="toggle(event, 'attendence-page')">一</button>
+                        <button type="button" class="btn btn-light mb-2" data-dismiss="modal" onclick="toggle(event, 'attendence-page')">二</button>
+                        <button type="button" class="btn btn-light mb-2" data-dismiss="modal" onclick="toggle(event, 'attendence-page')">三</button>
+                        <button type="button" class="btn btn-light mb-2" data-dismiss="modal" onclick="toggle(event, 'attendence-page')">四</button>
+                        <button type="button" class="btn btn-light mb-2" data-dismiss="modal" onclick="toggle(event, 'attendence-page')">午休</button>
+                        <button type="button" class="btn btn-light mb-2" data-dismiss="modal" onclick="toggle(event, 'attendence-page')">五</button>
+                        <button type="button" class="btn btn-light mb-2" data-dismiss="modal" onclick="toggle(event, 'attendence-page')">六</button>
+                        <button type="button" class="btn btn-light mb-2" data-dismiss="modal" onclick="toggle(event, 'attendence-page')">七</button>
+                        <button type="button" class="btn btn-light mb-2" data-dismiss="modal" onclick="toggle(event, 'attendence-page')">八</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center p-2 mt-auto">
+            Powered By ischool
+        </footer>
+    </div>
+
+    <script type="text/javascript">
+        function toggle(event,page){
+            event.preventDefault();
+            event.stopPropagation();
+            $('[page]').hide();
+            $(`#${page}`).show();
+
+            window.scrollTo(0,0);
+        }
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+</body>
+
+</html>
